@@ -87,7 +87,7 @@ function draw() {
 
 function background_setup() {
     rotateX(angleY);
-    translate(0, -1800, -800);
+    translate(0, -1800, -1000);
     rotateZ(angleX);
 
     background(51);
