@@ -64,8 +64,7 @@ a{
 }
 
 nav ul,
-.main,
-.project-category {
+.main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -206,8 +205,26 @@ title.name {
 
 /* ######################################################################### */
 /* Project Section */
+.project-category {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    text-align: justify;
+    line-height: 0;
+    vertical-align: top;
+    padding: 10px 0; /* adjust as needed */
+}
+
+.project-category:after {
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    line-height: 1.5;
+}
+
 .project-category button{
-    text-transform: capitalize;
+    margin: 0 10px
     border: 3px solid #265092;
     padding: 15px 30px;
     border-radius: 50px;
@@ -230,6 +247,11 @@ div[class^="category-"] {
     justify-self: center;
     position: relative;
     display: inline-block;
+}
+
+.project p{
+    font-size: 1.3rem;
+    color: #BEBEBE
 }
 
 .project-category .active {
