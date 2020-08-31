@@ -168,7 +168,7 @@ title.name {
 .project h1 {
     font-size: 10rem;
     z-index: 0;
-    opacity: .1;
+    opacity: .5;
 }
 
 .about h2 {
@@ -176,7 +176,7 @@ title.name {
     float: right;
     font-size: 10rem;
     z-index: 0;
-    opacity: .1;
+    opacity: .5;
 }
 
 .about-info {
@@ -285,7 +285,7 @@ div.hideCategory {
 .contact h1 {
     font-size: 10rem;
     z-index: 0;
-    opacity: .1;
+    opacity: .5;
 }
 
 .contact-info {
