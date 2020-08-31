@@ -7,7 +7,7 @@ class Particle {
         this.max_speed = 10;
         this.direction;
         //vectors
-        this.cas = createVector(1, 1, 1.5);
+        this.cas = createVector(1.1, 1, 1);
         this.position = createVector(random(-length / 5, length / 5), random(-width / 5, width / 5), height / 2 + random(-height / 5, height / 5));
         this.velocity = p5.Vector.random3D();
         this.velocity.setMag(this.max_speed);
@@ -25,6 +25,7 @@ class Particle {
         steer.add(alignments.mult(this.cas.y));
         steer.add(seperations.mult(this.cas.z));
         steer.add(boundary);
+        steer.add(p5.Vector.random3D().mult(0.1))
         // console.log(boundary, this.velocity);
         steer.limit(this.max_force);
         // steer.add(obsticles);
@@ -51,7 +52,7 @@ class Particle {
                 others = others.userdata;
                 //console.log("works", others);
             }
-            if (this.in_view(others, -this.perception / 2)) {
+            if (this.in_view(others, 0)) {
                 let diff = p5.Vector.sub(this.position, others.position);
                 let d = p5.Vector.dist(this.position, others.position);
                 avoid.add(diff.normalize().div(d));
@@ -117,7 +118,7 @@ class Particle {
     bound() {
         let low = map(this.position.z, 0, height / 4, this.max_speed, 0, true);
         let high = map(this.position.z, 3 * height / 4, height, 0, this.max_speed, true);
-        let steer = p5.Vector.sub(createVector(this.velocity.x, this.velocity.y, low - high).limit(this.max_speed), this.velocity);
+        let steer = createVector(0,0,low-high-this.velocity.z).normalize();
         // steer.normalize();
         return steer
     }
