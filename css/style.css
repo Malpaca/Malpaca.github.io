@@ -11,7 +11,7 @@ html {
 }
 
 .container {
-    width: 90%;
+    width: 85%;
     max-width: 120rem;
     height: 100%;
     margin: 0 auto;
@@ -24,17 +24,30 @@ body {
 
 header h1,
 header a,
-.text p,
+.main p,
 .about h1,
+.about h2,
 .skills h1,
 .project h1,
 .contact h1 {
     color: #707070;
 }
+
+a{
+    text-decoration: none;
+    font-size: .9rem;
+    text-transform: uppercase;
+    position: relative;
+    top: 50%;
+    bottom: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* ######################################################################### */
 /* Top navbar */
 .navbar {
     background-color: #181818;
-    padding: 0 10% 0 10%;
 }
 
 .navbar a{
@@ -43,6 +56,11 @@ header a,
 
 .navbar a:hover{
     color: #fff;
+}
+
+.navbar li {
+    list-style: none;
+    margin-left: 30px;
 }
 
 nav ul,
@@ -61,36 +79,23 @@ header {
 }
 
 
-li {
-    list-style: none;
-    margin-left: 30px;
-}
-
-a{
-    text-decoration: none;
-    font-size: .9rem;
-    text-transform: uppercase;
-    position: relative;
-    top: 50%;
-    bottom: 50%;
-    transform: translateY(-50%);
-}
-
-.main-info-section {
+/* ######################################################################### */
+/* Landing Page Section */
+.main {
     height: calc(100vh - 81.6px);
 }
 
-.text {
+.main-info {
     margin-top: 130px;
 }
 
-.text h1{
+.main-info h1{
     color:#fff;
     font-size: 3rem;
     cursor: context-menu;
 }
 
-.text title {
+.main-info title {
     display: inline-block;
 }
 
@@ -98,13 +103,13 @@ title.name {
     color: #0F52BA;
 }
 
-.text p{
+.main-info p{
     letter-spacing: 3px;
     word-spacing: 10px;
     font-size: .8rem;
 }
 
-.text a{
+.main-info a{
     padding: 12px 25px;
     background-color: none;
     border: 3px solid #265092;
@@ -112,17 +117,28 @@ title.name {
     font-size: .8rem;
     letter-spacing: 2px;
     position: relative;
-    top: 80px;
+    top: 50%;
     overflow: hidden;
     transition: .5s;
     display: inline-block;
 }
 
-.text a:hover {
+.main-info ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.main-info li {
+    list-style: none;
+    margin-right: 30px;
+}
+
+.main-info a:hover {
     color: #fff
 }
 
-.text a::before {
+.main-info a::before {
     content: '';
     background-color: #265092;
     position: absolute;
@@ -134,7 +150,7 @@ title.name {
     transition: .5s;
 }
 
-.text a:hover::before {
+.main-info a:hover::before {
     height: 100%;
 }
 
@@ -143,7 +159,126 @@ title.name {
     margin-top: 50px;
 }
 
-
+/* ######################################################################### */
+/* About me Section */
 .about {
+    margin-top: 100px;
+}
 
+.about h1,
+.project h1 {
+    font-size: 10rem;
+    z-index: 0;
+    opacity: .1;
+}
+
+.about h2 {
+    margin-top: -140px;
+    float: right;
+    font-size: 10rem;
+    z-index: 0;
+    opacity: .1;
+}
+
+.about-info {
+    top: -70px;
+    max-width: 75%;
+    background color: #252627;
+    box-shadow: 0 0 1.2rem rgba(0,0,0.25);
+    padding: 50px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.about-info p{
+    font-size: 1.3rem;
+    color: #BEBEBE
+}
+
+.about-info p:nth-child(2),
+.about-info p:last-child {
+    margin-top: 30px;
+}
+
+
+/* ######################################################################### */
+/* Project Section */
+.project-category button{
+    text-transform: capitalize;
+    border: 3px solid #265092;
+    padding: 15px 30px;
+    border-radius: 50px;
+    color: #265092;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    background color: #252627;
+    outline: none;
+    cursor: pointer;
+}
+
+div[class^="category-"] {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 20px;
+}
+
+.project a{
+    justify-self: center;
+    position: relative;
+    display: inline-block;
+}
+
+.project-category .active {
+    background-color:  #265092;
+}
+
+button.active{
+    color: #fff;
+}
+
+.project a img {
+    width: 350px;
+    justify-self: center;
+}
+
+div.hideCategory {
+    display: none;
+}
+
+.showCategory {
+    display: Block;
+}
+
+
+/* ######################################################################### */
+/* Contact Section */
+.contact {
+    margin-top: 100px;
+}
+
+.contact h1 {
+    font-size: 10rem;
+    z-index: 0;
+    opacity: .1;
+}
+
+.contact-info {
+    top: -70px;
+    max-width: 75%;
+    padding: 50px;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.contact-info p{
+    text-align: center;
+    font-size: 1.3rem;
+    color: #BEBEBE
 }
