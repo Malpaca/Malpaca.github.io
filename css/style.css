@@ -11,40 +11,16 @@ html {
 }
 
 .container {
-    padding: 0 100px 0 100px;
-}
-
-nav ul,
-.main-info-section,
-.project-category {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    width: 90%;
+    max-width: 120rem;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
 }
 
 body {
     background-color: #252627;
 }
-
-header {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 20px 0;
-}
-
-.navbar {
-    background-color: #181818;
-}
-
-.navbar a{
-    transition: .5s;
-}
-
-.navbar a:hover{
-    color: #fff;
-}
-
 
 header h1,
 header a,
@@ -55,6 +31,35 @@ header a,
 .contact h1 {
     color: #707070;
 }
+/* Top navbar */
+.navbar {
+    background-color: #181818;
+    padding: 0 10% 0 10%;
+}
+
+.navbar a{
+    transition: .5s;
+}
+
+.navbar a:hover{
+    color: #fff;
+}
+
+nav ul,
+.main,
+.project-category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
 
 li {
     list-style: none;
