@@ -23,7 +23,7 @@ function setup() {
     frameRate(120);
     createCanvas(1280, 720, WEBGL);
     // ortho(-length, length, width, -width/2, 0.1, 100);
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 100; i++) {
         flock.push(new Particle());
     }
     // noLoop();
