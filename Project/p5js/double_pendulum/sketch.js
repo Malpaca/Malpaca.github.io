@@ -16,7 +16,6 @@ let buffer;
 
 function setup() {
   createCanvas(500, 300);
-  //Issue with wrong rendering on a retina Mac. See issue: https://github.com/CodingTrain/website/issues/574
   pixelDensity(1);
   a1 = PI / 2;
   a2 = PI / 2;
@@ -68,9 +67,6 @@ function draw() {
   a2_v += a2_a;
   a1 += a1_v;
   a2 += a2_v;
-
-  // a1_v *= 0.99;
-  // a2_v *= 0.99;
 
   buffer.stroke(0);
   if (frameCount > 1) {

@@ -7,7 +7,6 @@ class Particle {
         this.max_speed = 10;
         this.direction;
         //vectors
-        this.cas = createVector(1, 1, 1.5);
         this.position = createVector(random(-length / 5, length / 5), random(-width / 5, width / 5), height / 2 + random(-height / 5, height / 5));
         this.velocity = p5.Vector.random3D();
         this.velocity.setMag(this.max_speed);
@@ -18,12 +17,12 @@ class Particle {
         let steer = createVector();
         let alignments = this.alignment(flock);
         let cohesions = this.cohesion(flock);
-        let seperations = this.seperation(flock);
+        let separations = this.separation(flock);
         let boundary = this.bound();
         // let obsticles = this.wall(walls);
-        steer.add(cohesions.mult(this.cas.x));
-        steer.add(alignments.mult(this.cas.y));
-        steer.add(seperations.mult(this.cas.z));
+        steer.add(cohesions.mult(cohesionSlider.value()));
+        steer.add(alignments.mult(alignSlider.value()));
+        steer.add(separations.mult(separationSlider.value()));
         steer.add(boundary);
         // console.log(boundary, this.velocity);
         steer.limit(this.max_force);
@@ -43,7 +42,7 @@ class Particle {
         // }
     }
 
-    seperation(flock) {
+    separation(flock) {
         let avoid = createVector();
         let total = 0
         for (let others of flock) {

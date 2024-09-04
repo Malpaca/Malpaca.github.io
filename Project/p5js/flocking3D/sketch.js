@@ -1,12 +1,14 @@
-let length = 5000;
-let width = 5000;
-let height = 2000;
+let length = 2000;
+let width = 2000;
+let height = 1000;
 
 let flock = [];
 let walls = [];
 fcount = 0;
 let framerateP;
 let withQuadTree;
+
+let alignSlider, cohesionSlider, separationSlider;
 
 angleX = 0;
 angleY = 1.1;
@@ -20,16 +22,32 @@ yOffset = 0;
 // }
 
 function setup() {
-    frameRate(120);
-    createCanvas(1280, 720, WEBGL);
+    // frameRateP(120);
+    createCanvas(1000, 1000, WEBGL);
     // ortho(-length, length, width, -width/2, 0.1, 100);
+    alignSlider = createSlider(0, 2, 1.5, 0.1);
+    alignP = createP('alignment weight: ')
+    cohesionSlider = createSlider(0, 2, 1, 0.1);
+    cohesionP = createP('cohesion weight: ')
+    separationSlider = createSlider(0, 2, 2, 0.1);
+    separationP = createP('separation weight: ')
     for (let i = 0; i < 100; i++) {
         flock.push(new Particle());
     }
     // noLoop();
-    framerateP = createP('framerate: ');
-    withQuadTree = createCheckbox('using quadtree');
+    framerateP = createP('Framerate: ');
+    withQuadTree = createCheckbox('using octotree');
     withQuadTree.checked(true);
+
+    // position setup
+    alignSlider.position(1050, 100);
+    alignP.position(1050, 110);
+    cohesionSlider.position(1050, 200);
+    cohesionP.position(1050, 210);
+    separationSlider.position(1050, 300);
+    separationP.position(1050, 310);
+    framerateP.position(1050, 900)
+    withQuadTree.position(1050, 950)
 }
 
 // function draw(){
@@ -45,6 +63,9 @@ function setup() {
 function draw() {
     // setGradient(340, 0, 20, 80, color(255,0,0), color(0,0,255));
     background_setup();
+    alignP.html('alignment weight: ' + alignSlider.value());
+    cohesionP.html('cohesion weight: ' + cohesionSlider.value());
+    separationP.html('separation weight: ' + separationSlider.value());
 
     let boundary = new Rectangle(0, 0, 0, length / 2, width / 2, height / 2);
     qtree = new QuadTree(boundary, 4);
@@ -80,20 +101,34 @@ function draw() {
     }
     if (fcount % 50 == 0) {
         fcount = 0
-        console.log(flock[0].acceleration)
+        // console.log(flock[0].acceleration)
     }
 
 }
 
 function background_setup() {
-    rotateX(angleY);
-    translate(0, -1800, -1000);
-    rotateZ(angleX);
+    perspective(1, 1, 0.01, 15000);
+    rotateX(1); //angelY
+    translate(0, -1800, -1300);
+    rotateZ(150); //angelX
+    // camera(0, 0, -2000, 0, 0, 0)
 
     background(51);
-    noStroke();
+    // noStroke();
+    strokeWeight(5);
+    stroke('white');
     fill(150);
     rect(-length / 2, -width / 2, length, width);
+
+    line(-length/2, -width/2, 0, -length/2, -width/2, height);
+    line(length/2, -width/2, 0, length/2, -width/2, height);
+    // line(-length/2, width/2, 0, -length/2, width/2, height);
+    line(length/2, width/2, 0, length/2, width/2, height);
+
+    line(-length/2, -width/2, height, length/2, -width/2, height);
+    line(length/2, -width/2, height, length/2, width/2, height);
+    // line(length/2, width/2, height, -length/2, width/2, height);
+    // line(-length/2, width/2, height, -length/2, -width/2, height);
     // push();
     //   translate(-length/2, -width/2);
     //   rotateX(PI/2);
@@ -125,12 +160,12 @@ function background_setup() {
     // directionalLight(255,255,255,-length/2, width/2, height);
 }
 
-function mousePressed() {
-    xOffset = angleX + mouseX / 100;
-    yOffset = mouseY / 100 - angleY;
-}
+// function mousePressed() {
+//     xOffset = angleX + mouseX / 100;
+//     yOffset = mouseY / 100 - angleY;
+// }
 
-function mouseDragged() {
-    angleX = xOffset - mouseX / 100;
-    angleY = mouseY / 100 - yOffset;
-}
+// function mouseDragged() {
+//     angleX = xOffset - mouseX / 100;
+//     angleY = mouseY / 100 - yOffset;
+// }
